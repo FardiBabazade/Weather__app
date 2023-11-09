@@ -99,7 +99,7 @@ function Home() {
                   <div className="search-container">
                     <input
                       type="text"
-                      placeholder="Search city...."
+                      placeholder="Search city.."
                       value={inputValue}
                       onChange={handleChange}
                       className="location"
