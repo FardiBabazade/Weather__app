@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.afa32b49.css",
+    "main.js": "/static/js/main.02cfd174.js",
+    "static/js/787.42650831.chunk.js": "/static/js/787.42650831.chunk.js",
+    "static/media/night.jpg": "/static/media/night.0e47f088bb22c2714d48.jpg",
+    "static/media/sunimage.jpg": "/static/media/sunimage.06b4816c763aef97b682.jpg",
+    "static/media/rainstorm.png": "/static/media/rainstorm.841f7fddb55c7aba2de1.png",
+    "static/media/brokencloud.png": "/static/media/brokencloud.45884c2a35d3df3eb867.png",
+    "static/media/snowy.png": "/static/media/snowy.863ad3c5d562b49766e1.png",
+    "static/media/misticon.avif": "/static/media/misticon.d97ba71b88bfaddbee1a.avif",
+    "static/media/scattered.png": "/static/media/scattered.8c4fdc868648f92f5ed7.png",
+    "static/media/cloud.png": "/static/media/cloud.2da1f66c8b49736bf613.png",
+    "static/media/strongsnow.webp": "/static/media/strongsnow.f90a43c9a3769776fb98.webp",
+    "static/media/rain.png": "/static/media/rain.7b962ef62dcd161b4cb6.png",
+    "static/media/clearly.png": "/static/media/clearly.1eb7082e2e6ec7f2d01e.png",
+    "static/media/overcasticon.png": "/static/media/overcasticon.14088feff2356e36a1f9.png",
+    "index.html": "/index.html",
+    "main.afa32b49.css.map": "/static/css/main.afa32b49.css.map",
+    "main.02cfd174.js.map": "/static/js/main.02cfd174.js.map",
+    "787.42650831.chunk.js.map": "/static/js/787.42650831.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afa32b49.css",
+    "static/js/main.02cfd174.js"
+  ]
+}
