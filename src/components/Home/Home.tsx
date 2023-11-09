@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import sun from "../../assets/images/clearly.png";
+import moon from "../../assets/images/moon.jpg";
 import cloud from "../../assets/images/cloud.png";
-import broken_cloud from "../../assets/images/broken_cloud.png";
-import overcast_cloud from "../../assets/images/overcastcloud.png";
+import broken_cloud from "../../assets/images/brokencloud.png";
+import overcast_cloud from "../../assets/images/overcasticon.png";
+import scattered_cloud from "../../assets/images/scattered.png";
 import rain from "../../assets/images/rain.png";
+import rainstorm from "../../assets/images/rainstorm.png";
 import misticon from "../../assets/images/misticon.avif";
 import snowy from "../../assets/images/snowy.png";
 import strongsnowy from "../../assets/images/strongsnow.webp";
+import nightback from "../../assets/images/night.jpg";
+import sunback from "../../assets/images/sunimage.jpg";
 import "./Home.css";
 
 function Home() {
@@ -20,8 +25,13 @@ function Home() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-  const currentDate = new Date();
-
+  const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter"){
+       getData()
+    };
+  };
+  let currentHours = Number(new Date().getHours());
+  let currentDate=new Date()
   interface weatherinfo {
     cod: string;
     weather: {
@@ -72,7 +82,7 @@ function Home() {
     }
   };
   return (
-    <section>
+    <section style={{backgroundImage:`url(${(currentHours>7 && currentHours<=18) ? sunback : nightback})`}}>
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -81,9 +91,8 @@ function Home() {
               autoClose={1500}
               theme="colored"
             />
-            <h3 className="text-center  text-light title">WEATHER APP</h3>
+            <h3 className="text-center  text-light fw-bold title">WEATHER APP</h3>
             <center>
-              <span className="text-light">{currentDate.toDateString()}</span>
               <div className="card-weather">
                 <div className="card-header">
                   <i className={`fa fa-map-marker`}></i>
@@ -94,15 +103,21 @@ function Home() {
                       value={inputValue}
                       onChange={handleChange}
                       className="location"
+                      onKeyDown={handleKeydown}
                     />
                     <i onClick={getData} className="fa fa-search"></i>
                   </div>
                 </div>
+                <span className="text-dark d-block  fw-bold title-date">{currentDate.toLocaleString()}</span>
                 <div className="card-body">
                   {infoData?.cod !== "404" ? (
-                    infoData?.weather[0].description == "clear sky" ? (
+                    infoData?.weather[0].description == "clear sky" &&(currentHours>=0 && currentHours<=7)  ? (
+                      <img src={moon} alt="" />
+                    ) : infoData?.weather[0].description == "clear sky" &&(currentHours>7 && currentHours<=18)  ? (
                       <img src={sun} alt="" />
-                    ) : infoData?.weather[0].description == "few clouds" ? (
+                    ) :infoData?.weather[0].description == "clear sky" &&(currentHours>18 && currentHours<=24)  ? (
+                      <img src={moon} alt="" />
+                    ): infoData?.weather[0].description == "few clouds" ? (
                       <img src={cloud} alt="" />
                     ) : infoData?.weather[0].description == "broken clouds" ? (
                       <img src={broken_cloud} alt="" />
@@ -111,10 +126,13 @@ function Home() {
                       <img src={overcast_cloud} alt="" />
                     ) : infoData?.weather[0].description ==
                       "scattered clouds" ? (
-                      <img src={overcast_cloud} alt="" />
+                      <img src={scattered_cloud} alt="" />
                     ) : infoData?.weather[0].description == "light rain" ? (
                       <img src={rain} alt="" />
-                    ) : infoData?.weather[0].description ==
+                    ) :infoData?.weather[0].description == "thunderstorm with light rain" ? (
+                      <img src={rainstorm} alt="" />
+                    ):
+                    infoData?.weather[0].description ==
                       "light intensity shower rain" ? (
                       <img src={rain} alt="" />
                     ) : infoData?.weather[0].description == "light snow" ? (
@@ -131,7 +149,6 @@ function Home() {
                   ) : (
                     ""
                   )}
-
                   <p className="temperature">
                     <span>
                       {infoData?.cod !== "404" &&
